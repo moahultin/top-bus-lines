@@ -1,24 +1,27 @@
-import logo from './logo.svg';
+import React, {useState, useEffect} from "react";
 import './App.css';
+import axios from "axios";
+
+import Acc from "./Components/Acc";
+import PageLayout from "./Components/PageLayout";
+
+const url = "http://localhost:9000/top-bus-lines";
 
 function App() {
-  return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
-    </div>
+  const [data, setData] = React.useState(null);
+
+  React.useEffect(() => {
+    axios.get(url).then((response) => {
+        setData(response.data);
+    });
+  }, []);
+
+    if (!data) return null;
+
+    return (
+        <div className="Top-Lines-App">
+          <PageLayout data={data}/>
+        </div>
   );
 }
 
