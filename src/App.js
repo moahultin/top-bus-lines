@@ -1,22 +1,26 @@
-import React, {useState, useEffect} from "react";
+import React from "react";
 import './App.css';
 import axios from "axios";
 
-import Acc from "./Components/Acc";
 import PageLayout from "./Components/PageLayout";
+import {LinearProgress} from "@material-ui/core";
 
-const url = "http://localhost:9000/top-bus-lines";
+const endpoint = "http://localhost:9000/top-bus-lines";
 
 function App() {
   const [data, setData] = React.useState(null);
 
   React.useEffect(() => {
-    axios.get(url).then((response) => {
+    axios.get(endpoint)
+        .then((response) => {
         setData(response.data);
-    });
+        })
+        .catch((error) => {
+            // TODO Handle errors
+        });
   }, []);
 
-    if (!data) return null;
+    if (!data) return <LinearProgress />;
 
     return (
         <div className="Top-Lines-App">

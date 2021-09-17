@@ -8,13 +8,9 @@ import {
 import DirectionsBusIcon from '@material-ui/icons/DirectionsBus';
 import ListItemStop from "./ListItemStop";
 
-
-const handleClick = () => {
-};
-
 const ListItemLine = React.memo(
     ({ name , stops}) => (
-        <ListItem button onClick={handleClick()}>
+        <ListItem button>
             <ListItemIcon>
                 <DirectionsBusIcon />
             </ListItemIcon>

@@ -12,7 +12,7 @@ const PageLayout = React.memo(({ data }) => (
                 <Typography color="inherit" variant="h6">Top 10 Bus Lines!</Typography>
             </Toolbar>
         </AppBar>
-        <div className="App">
+        <div className="AccDiv">
             {data.map((p, i) => (
                 <Acc {...p} key={i} />
             ))}
